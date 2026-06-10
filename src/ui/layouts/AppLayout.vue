@@ -1,8 +1,16 @@
+<template>
+  <component :is="layout">
+    <AppHeader />
+    <slot />
+  </component>
+</template>
+
 <script setup lang="ts">
 import { computed } from 'vue'
 import DesktopLayout from '@layouts/DesktopLayout.vue'
 import TabletLayout from '@layouts/TabletLayout.vue'
 import MobileLayout from '@layouts/MobileLayout.vue'
+import AppHeader from '@organisms/AppHeader.vue'
 import { useBreakpoint } from '@composables/useBreakpoint'
 
 const { isMobile, isTablet } = useBreakpoint()
@@ -13,9 +21,3 @@ const layout = computed(() => {
   return DesktopLayout
 })
 </script>
-
-<template>
-  <component :is="layout">
-    <slot />
-  </component>
-</template>

@@ -15,7 +15,10 @@
       "@stores/*": ["./src/ui/stores/*"],
       "@api/*": ["./src/api/*"],
       "@types/*": ["./src/types/*"],
-      "@utils/*": ["./src/utils/*"]
+      "@utils/*": ["./src/utils/*"],
+      "@atoms/*": ["./src/ui/components/atoms/*"],
+      "@molecules/*": ["./src/ui/components/molecules/*"],
+      "@organisms/*": ["./src/ui/components/organisms/*"]
     },
 
     // `vue-tsc --build` produces a .tsbuildinfo file for incremental type-checking.

@@ -20,6 +20,9 @@ export default defineConfig({
       '@api': fileURLToPath(new URL('./src/api', import.meta.url)),
       '@types': fileURLToPath(new URL('./src/types', import.meta.url)),
       '@utils': fileURLToPath(new URL('./src/utils', import.meta.url)),
+      '@atoms': fileURLToPath(new URL('./src/ui/components/atoms', import.meta.url)),
+      '@molecules': fileURLToPath(new URL('./src/ui/components/molecules', import.meta.url)),
+      '@organisms': fileURLToPath(new URL('./src/ui/components/organisms', import.meta.url)),
     },
   },
 })
