@@ -23,11 +23,10 @@ defineProps<{
 }>()
 
 const links = [
-  { label: 'Home', href: '/' },
-  { label: 'Getting Started', href: '/getting-started' },
+  { label: 'Home', href: '/home' },
   { label: 'Project Structure', href: '/project-structure' },
   { label: 'Development', href: '/development' },
-  { label: 'Deployment', href: '/deployment' },
   { label: 'Support', href: '/support' },
+  { label: 'Latest Updates', href: '/latest-updates' },
 ]
 </script>

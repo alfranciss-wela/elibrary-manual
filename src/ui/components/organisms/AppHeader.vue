@@ -1,7 +1,7 @@
 <template>
-  <header class="w-full bg-white">
+  <header class="w-full bg-white border-b border-slate-200">
 
-    <div class="w-full px-6 h-14 flex items-center justify-between">
+    <div class="w-full max-w-[1440px] mx-auto px-6 h-14 flex items-center justify-between">
       <AppBrand />
 
       <NavBar v-if="isDesktop" :active-path="activePath" />

@@ -5,22 +5,13 @@
     :aria-label="open ? 'Close menu' : 'Open menu'"
     @click="$emit('toggle')"
   >
-    <span
-      class="block w-5 h-0.5 bg-gray-600 transition-all duration-200"
-      :class="open ? 'rotate-45 translate-y-2' : ''"
-    />
-    <span
-      class="block w-5 h-0.5 bg-gray-600 transition-all duration-200"
-      :class="open ? 'opacity-0' : ''"
-    />
-    <span
-      class="block w-5 h-0.5 bg-gray-600 transition-all duration-200"
-      :class="open ? '-rotate-45 -translate-y-2' : ''"
-    />
+    <MenuIcon :open="open" />
   </button>
 </template>
 
 <script setup lang="ts">
+import MenuIcon from '@atoms/icons/MenuIcon.vue'
+
 defineProps<{ open?: boolean }>()
 defineEmits<{ toggle: [] }>()
 </script>

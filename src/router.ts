@@ -1,10 +1,22 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+declare module 'vue-router' {
+  interface RouteMeta {
+    fullWidth?: boolean
+  }
+}
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
+      name: 'landing',
+      component: () => import('@pages/LandingPage.vue'),
+      meta: { fullWidth: true },
+    },
+    {
+      path: '/home',
       name: 'home',
       component: () => import('@pages/HomePage.vue'),
     },
@@ -32,6 +44,11 @@ const router = createRouter({
       path: '/support',
       name: 'support',
       component: () => import('@pages/SupportPage.vue'),
+    },
+    {
+      path: '/latest-updates',
+      name: 'latest-updates',
+      component: () => import('@pages/LatestUpdatesPage.vue'),
     },
   ],
 })

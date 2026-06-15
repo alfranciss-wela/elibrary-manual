@@ -1,6 +1,5 @@
 <template>
   <component :is="layout">
-    <AppHeader />
     <slot />
   </component>
 </template>
@@ -10,7 +9,6 @@ import { computed } from 'vue'
 import DesktopLayout from '@layouts/DesktopLayout.vue'
 import TabletLayout from '@layouts/TabletLayout.vue'
 import MobileLayout from '@layouts/MobileLayout.vue'
-import AppHeader from '@organisms/AppHeader.vue'
 import { useBreakpoint } from '@composables/useBreakpoint'
 
 const { isMobile, isTablet } = useBreakpoint()
