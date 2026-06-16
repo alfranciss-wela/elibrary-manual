@@ -1,12 +1,15 @@
 <template>
   <div
-    class="group relative rounded-2xl border border-indigo-100/70 bg-white p-4 shadow-sm transition-all duration-300 overflow-hidden lg:hover:shadow-lg lg:hover:border-indigo-200 lg:hover:-translate-y-1"
-    :class="sectionId ? 'cursor-pointer' : ''"
+    class="group relative rounded-2xl border border-indigo-100/70 bg-white p-4 shadow-sm transition-all duration-300 overflow-hidden"
+    :class="[
+      sectionId ? 'cursor-pointer' : '',
+      isDesktop ? 'hover:shadow-lg hover:border-indigo-200 hover:-translate-y-1' : '',
+    ]"
     @click="scrollToSection"
   >
     <div
-      class="absolute inset-0 opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"
-      :class="gradientClass"
+      class="absolute inset-0 opacity-0 transition-opacity duration-300 rounded-2xl"
+      :class="[gradientClass, isDesktop ? 'group-hover:opacity-100' : '']"
     />
 
     <div class="relative z-10">
@@ -19,9 +22,16 @@
       <h3 class="text-sm font-bold text-slate-800 mb-1">{{ title }}</h3>
       <p class="text-xs text-slate-500 leading-relaxed">{{ description }}</p>
 
-      <span v-if="sectionId" class="inline-flex items-center gap-1 mt-2 text-xs font-medium text-slate-400 lg:group-hover:text-slate-600 transition-colors">
+      <span
+        v-if="sectionId"
+        class="inline-flex items-center gap-1 mt-2 text-xs font-medium text-slate-400 transition-colors"
+        :class="isDesktop ? 'group-hover:text-slate-600' : ''"
+      >
         Learn more
-        <ChevronIcon class="w-3 h-3 -rotate-90 lg:group-hover:translate-x-0.5 transition-transform" />
+        <ChevronIcon
+          class="w-3 h-3 -rotate-90 transition-transform"
+          :class="isDesktop ? 'group-hover:translate-x-0.5' : ''"
+        />
       </span>
     </div>
   </div>
@@ -29,6 +39,7 @@
 
 <script setup lang="ts">
 import ChevronIcon from '@atoms/icons/ChevronIcon.vue'
+import { useBreakpoint } from '@composables/useBreakpoint'
 
 type CardColor = 'indigo' | 'emerald' | 'amber' | 'rose' | 'blue' | 'cyan' | 'slate'
 
@@ -42,6 +53,8 @@ const props = withDefaults(defineProps<{
   color: 'indigo',
   sectionId: '',
 })
+
+const { isDesktop } = useBreakpoint()
 
 const bgMap: Record<CardColor, string> = {
   indigo: 'bg-indigo-50',

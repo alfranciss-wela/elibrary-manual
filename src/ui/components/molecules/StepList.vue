@@ -6,7 +6,7 @@
         v-for="(step, i) in steps"
         :key="step.title"
         class="relative bg-white rounded-2xl border border-slate-100 shadow-sm px-5 py-4 transition-all duration-200"
-        :class="hoverClass"
+        :class="isDesktop ? hoverClass : ''"
       >
         <span
           class="absolute -left-[1.65rem] top-4 w-5 h-5 rounded-full text-white text-[10px] font-black flex items-center justify-center"
@@ -23,6 +23,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useBreakpoint } from '@composables/useBreakpoint'
 
 type StepColor = 'indigo' | 'emerald' | 'amber' | 'rose' | 'blue' | 'cyan' | 'slate'
 
@@ -40,6 +41,8 @@ const props = withDefaults(
     color: 'indigo',
   },
 )
+
+const { isDesktop } = useBreakpoint()
 
 const borderColorMap: Record<StepColor, string> = {
   indigo: 'border-indigo-100',
@@ -62,13 +65,13 @@ const dotColorMap: Record<StepColor, string> = {
 }
 
 const hoverColorMap: Record<StepColor, string> = {
-  indigo: 'lg:hover:border-indigo-200 lg:hover:shadow-md',
-  emerald: 'lg:hover:border-emerald-200 lg:hover:shadow-md',
-  amber: 'lg:hover:border-amber-200 lg:hover:shadow-md',
-  rose: 'lg:hover:border-rose-200 lg:hover:shadow-md',
-  blue: 'lg:hover:border-blue-200 lg:hover:shadow-md',
-  cyan: 'lg:hover:border-cyan-200 lg:hover:shadow-md',
-  slate: 'lg:hover:border-slate-300 lg:hover:shadow-md',
+  indigo: 'hover:border-indigo-200 hover:shadow-md',
+  emerald: 'hover:border-emerald-200 hover:shadow-md',
+  amber: 'hover:border-amber-200 hover:shadow-md',
+  rose: 'hover:border-rose-200 hover:shadow-md',
+  blue: 'hover:border-blue-200 hover:shadow-md',
+  cyan: 'hover:border-cyan-200 hover:shadow-md',
+  slate: 'hover:border-slate-300 hover:shadow-md',
 }
 
 const borderColor = computed(() => borderColorMap[props.color])

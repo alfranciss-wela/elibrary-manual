@@ -1,9 +1,7 @@
 <template>
   <div class="w-full">
-    <!-- Intro: fills the viewport so sections start below the fold -->
     <div class="min-h-[calc(100vh-3.5rem)] flex flex-col justify-center py-10 space-y-12">
 
-      <!-- Header section -->
       <div class="space-y-4 max-w-3xl">
         <AppBadge color="indigo" dot class="uppercase tracking-wide font-semibold">
           Documentation
@@ -26,7 +24,6 @@
           </AppBadge>
         </div>
 
-        <!-- Quick stats -->
         <div class="flex flex-wrap items-center gap-x-8 gap-y-3 pt-4">
           <div v-for="stat in stats" :key="stat.label" class="flex flex-col">
             <span class="text-2xl font-black text-slate-900">{{ stat.value }}</span>
@@ -35,7 +32,6 @@
         </div>
       </div>
 
-      <!-- Feature cards -->
       <div>
         <div class="flex items-center gap-3 mb-4">
           <span class="text-xs font-bold uppercase tracking-widest text-slate-400">Explore Modules</span>
@@ -58,12 +54,11 @@
       <div class="flex justify-center pt-2">
         <span class="inline-flex flex-col items-center gap-1 text-slate-300">
           <span class="text-[11px] font-medium uppercase tracking-widest">Scroll to explore</span>
-          <ChevronIcon class="w-4 h-4 animate-bounce" />
+          <ChevronIcon class="w-4 h-4" :class="isDesktop ? 'animate-bounce' : ''" />
         </span>
       </div>
     </div>
 
-    <!-- Feature sections -->
     <BookManagementSection />
     <QrTransactionsSection />
     <ApprovalWorkflowsSection />
@@ -74,6 +69,9 @@
 <script setup lang="ts">
 import AppBadge from '@atoms/AppBadge.vue'
 import ChevronIcon from '@atoms/icons/ChevronIcon.vue'
+import { useBreakpoint } from '@composables/useBreakpoint'
+
+const { isDesktop } = useBreakpoint()
 import FeatureCard from '@molecules/FeatureCard.vue'
 import BookManagementSection from '@organisms/Home/BookManagementSection.vue'
 import QrTransactionsSection from '@organisms/Home/QrTransactionsSection.vue'

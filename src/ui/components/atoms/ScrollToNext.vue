@@ -2,12 +2,16 @@
   <div class="relative z-10 flex justify-center pt-8 pb-2">
     <button
       type="button"
-      class="group flex flex-col items-center gap-1.5 text-slate-400 lg:hover:text-slate-600 transition-colors duration-200"
+      class="group flex flex-col items-center gap-1.5 text-slate-400 transition-colors duration-200"
+      :class="isDesktop ? 'hover:text-slate-600' : ''"
       :aria-label="`Scroll to ${targetId}`"
       @click="scrollToNext"
     >
       <span class="text-xs font-medium tracking-wide">{{ label }}</span>
-      <span class="w-8 h-8 rounded-full border border-slate-200 lg:group-hover:border-slate-400 flex items-center justify-center transition-all duration-200 lg:group-hover:translate-y-1">
+      <span
+        class="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center transition-all duration-200"
+        :class="isDesktop ? 'group-hover:border-slate-400 group-hover:translate-y-1' : ''"
+      >
         <ChevronIcon class="w-4 h-4" />
       </span>
     </button>
@@ -16,6 +20,7 @@
 
 <script setup lang="ts">
 import ChevronIcon from '@atoms/icons/ChevronIcon.vue'
+import { useBreakpoint } from '@composables/useBreakpoint'
 
 const props = withDefaults(defineProps<{
   targetId: string
@@ -23,6 +28,8 @@ const props = withDefaults(defineProps<{
 }>(), {
   label: 'Next',
 })
+
+const { isDesktop } = useBreakpoint()
 
 function scrollToNext() {
   const el = document.getElementById(props.targetId)
