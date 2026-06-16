@@ -1,11 +1,11 @@
 <template>
   <div
-    class="group relative rounded-2xl border border-indigo-100/70 bg-white p-4 shadow-sm hover:shadow-lg hover:border-indigo-200 hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+    class="group relative rounded-2xl border border-indigo-100/70 bg-white p-4 shadow-sm transition-all duration-300 overflow-hidden lg:hover:shadow-lg lg:hover:border-indigo-200 lg:hover:-translate-y-1"
     :class="sectionId ? 'cursor-pointer' : ''"
     @click="scrollToSection"
   >
     <div
-      class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"
+      class="absolute inset-0 opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"
       :class="gradientClass"
     />
 
@@ -19,9 +19,9 @@
       <h3 class="text-sm font-bold text-slate-800 mb-1">{{ title }}</h3>
       <p class="text-xs text-slate-500 leading-relaxed">{{ description }}</p>
 
-      <span v-if="sectionId" class="inline-flex items-center gap-1 mt-2 text-xs font-medium text-slate-400 group-hover:text-slate-600 transition-colors">
+      <span v-if="sectionId" class="inline-flex items-center gap-1 mt-2 text-xs font-medium text-slate-400 lg:group-hover:text-slate-600 transition-colors">
         Learn more
-        <ChevronIcon class="w-3 h-3 -rotate-90 group-hover:translate-x-0.5 transition-transform" />
+        <ChevronIcon class="w-3 h-3 -rotate-90 lg:group-hover:translate-x-0.5 transition-transform" />
       </span>
     </div>
   </div>

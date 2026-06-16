@@ -3,7 +3,7 @@
     <button
       v-if="visible"
       type="button"
-      class="fixed bottom-6 right-6 z-50 w-10 h-10 rounded-full bg-slate-900 text-white shadow-lg hover:bg-slate-700 hover:-translate-y-1 transition-all duration-200 flex items-center justify-center"
+      class="fixed bottom-6 right-6 z-50 w-10 h-10 rounded-full bg-slate-900 text-white shadow-lg lg:hover:bg-slate-700 lg:hover:-translate-y-1 transition-all duration-200 flex items-center justify-center"
       aria-label="Scroll to top"
       @click="scrollToTop"
     >

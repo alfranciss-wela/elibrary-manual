@@ -6,7 +6,7 @@
         v-for="(step, i) in steps"
         :key="step.title"
         class="relative bg-white rounded-2xl border border-slate-100 shadow-sm px-5 py-4 transition-all duration-200"
-        :class="`hover:border-${color}-200 hover:shadow-md`"
+        :class="hoverClass"
       >
         <span
           class="absolute -left-[1.65rem] top-4 w-5 h-5 rounded-full text-white text-[10px] font-black flex items-center justify-center"
@@ -61,6 +61,17 @@ const dotColorMap: Record<StepColor, string> = {
   slate: 'bg-slate-500',
 }
 
+const hoverColorMap: Record<StepColor, string> = {
+  indigo: 'lg:hover:border-indigo-200 lg:hover:shadow-md',
+  emerald: 'lg:hover:border-emerald-200 lg:hover:shadow-md',
+  amber: 'lg:hover:border-amber-200 lg:hover:shadow-md',
+  rose: 'lg:hover:border-rose-200 lg:hover:shadow-md',
+  blue: 'lg:hover:border-blue-200 lg:hover:shadow-md',
+  cyan: 'lg:hover:border-cyan-200 lg:hover:shadow-md',
+  slate: 'lg:hover:border-slate-300 lg:hover:shadow-md',
+}
+
 const borderColor = computed(() => borderColorMap[props.color])
 const dotColor = computed(() => dotColorMap[props.color])
+const hoverClass = computed(() => hoverColorMap[props.color])
 </script>
