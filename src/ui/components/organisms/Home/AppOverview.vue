@@ -58,9 +58,7 @@
       <div class="flex justify-center pt-2">
         <span class="inline-flex flex-col items-center gap-1 text-slate-300">
           <span class="text-[11px] font-medium uppercase tracking-widest">Scroll to explore</span>
-          <svg class="w-4 h-4 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
+          <ChevronIcon class="w-4 h-4 animate-bounce" />
         </span>
       </div>
     </div>
@@ -75,6 +73,7 @@
 
 <script setup lang="ts">
 import AppBadge from '@atoms/AppBadge.vue'
+import ChevronIcon from '@atoms/icons/ChevronIcon.vue'
 import FeatureCard from '@molecules/FeatureCard.vue'
 import BookManagementSection from '@organisms/Home/BookManagementSection.vue'
 import QrTransactionsSection from '@organisms/Home/QrTransactionsSection.vue'

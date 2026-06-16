@@ -8,15 +8,15 @@
     >
       <span class="text-xs font-medium tracking-wide">{{ label }}</span>
       <span class="w-8 h-8 rounded-full border border-slate-200 group-hover:border-slate-400 flex items-center justify-center transition-all duration-200 group-hover:translate-y-1">
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-        </svg>
+        <ChevronIcon class="w-4 h-4" />
       </span>
     </button>
   </div>
 </template>
 
 <script setup lang="ts">
+import ChevronIcon from '@atoms/icons/ChevronIcon.vue'
+
 const props = withDefaults(defineProps<{
   targetId: string
   label?: string

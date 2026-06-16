@@ -7,15 +7,14 @@
       aria-label="Scroll to top"
       @click="scrollToTop"
     >
-      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
-      </svg>
+      <ChevronIcon class="w-4 h-4 rotate-180" />
     </button>
   </Transition>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
+import ChevronIcon from '@atoms/icons/ChevronIcon.vue'
 
 const visible = ref(false)
 
