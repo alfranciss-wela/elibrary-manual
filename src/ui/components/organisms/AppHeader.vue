@@ -1,16 +1,18 @@
 <template>
   <header class="w-full bg-white border-b border-slate-200">
 
-    <div class="w-full max-w-[1440px] mx-auto px-6 h-14 flex items-center justify-between">
-      <AppBrand />
+    <div class="pr-[var(--sbw,0px)]">
+      <div class="w-full max-w-[1440px] mx-auto px-6 md:px-10 lg:px-8 h-14 flex items-center justify-between">
+        <AppBrand />
 
-      <NavBar v-if="isDesktop" :active-path="activePath" />
+        <NavBar v-if="isDesktop" :active-path="activePath" />
 
-      <HamburgerButton
-        v-else
-        :open="drawerOpen"
-        @toggle="drawerOpen = !drawerOpen"
-      />
+        <HamburgerButton
+          v-else
+          :open="drawerOpen"
+          @toggle="drawerOpen = !drawerOpen"
+        />
+      </div>
     </div>
 
     <MobileNavDrawer

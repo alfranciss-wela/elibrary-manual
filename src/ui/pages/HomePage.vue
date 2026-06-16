@@ -1,3 +1,7 @@
 <template>
-  <p class="text-xl font-bold text-center mt-10">Home</p>
+  <AppOverview />
 </template>
+
+<script setup lang="ts">
+import AppOverview from '@organisms/Home/AppOverview.vue'
+</script>
