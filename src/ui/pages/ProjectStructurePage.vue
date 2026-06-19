@@ -1,3 +1,7 @@
 <template>
-  <p class="text-xl font-bold text-center mt-10">Project Structure</p>
+  <StructureOverview />
 </template>
+
+<script setup lang="ts">
+import StructureOverview from '@organisms/ProjectStructure/StructureOverview.vue'
+</script>

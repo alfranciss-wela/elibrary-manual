@@ -19,6 +19,7 @@
       v-if="!isDesktop"
       :open="drawerOpen"
       :active-path="activePath"
+      @close="drawerOpen = false"
     />
 
   </header>
