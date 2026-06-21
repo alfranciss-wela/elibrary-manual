@@ -21,24 +21,14 @@ const router = createRouter({
       component: () => import('@pages/HomePage.vue'),
     },
     {
-      path: '/getting-started',
-      name: 'getting-started',
-      component: () => import('@pages/GettingStartedPage.vue'),
-    },
-    {
       path: '/project-structure',
       name: 'project-structure',
       component: () => import('@pages/ProjectStructurePage.vue'),
     },
     {
-      path: '/development',
-      name: 'development',
-      component: () => import('@pages/DevelopmentPage.vue'),
-    },
-    {
-      path: '/deployment',
-      name: 'deployment',
-      component: () => import('@pages/DeploymentPage.vue'),
+      path: '/workflow',
+      name: 'workflow',
+      component: () => import('@pages/WorkflowPage.vue'),
     },
     {
       path: '/support',

@@ -30,21 +30,17 @@
         developers, administrators, and future maintainers.
       </p>
 
-      <div class="w-full max-w-sm mt-3 sm:max-w-lg md:max-w-xl sm:mt-4">
-        <div class="flex items-center gap-3 bg-white border border-slate-200 rounded-full px-4 py-2.5 shadow-md sm:px-5 sm:py-3 focus-within:border-indigo-500 focus-within:shadow-indigo-100 transition-all duration-200">
+      <AppTooltip text="Ongoing development — search is coming soon" position="top" class="w-full max-w-sm mt-3 sm:max-w-lg md:max-w-xl sm:mt-4">
+        <div class="w-full flex items-center gap-3 bg-white/60 border border-slate-200 rounded-full px-4 py-2.5 shadow-md sm:px-5 sm:py-3 cursor-not-allowed opacity-60 select-none">
           <SearchIcon class="text-slate-400 shrink-0 w-4 h-4" />
-          <input
-            v-model="searchQuery"
-            type="text"
-            placeholder="Search documentation, components, or tutorials..."
-            class="flex-1 bg-transparent border-none outline-none text-xs text-slate-900 placeholder:text-slate-400 sm:text-sm"
-            @keydown.enter="handleSearch"
-          />
+          <span class="flex-1 text-xs text-slate-400 sm:text-sm">
+            Search documentation, components, or tutorials...
+          </span>
           <kbd class="shrink-0 text-xs text-slate-400 bg-slate-100 border border-slate-200 rounded px-1.5 py-0.5 pointer-events-none hidden sm:inline">
             ⌘ K
           </kbd>
         </div>
-      </div>
+      </AppTooltip>
 
       <div class="flex gap-2 mt-2">
         <button
@@ -63,6 +59,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 import SearchIcon from '@atoms/icons/SearchIcon.vue'
+import AppTooltip from '@atoms/AppTooltip.vue'
 
 import bg1 from '@/assets/images/background-1.png'
 import bg2 from '@/assets/images/background-2.png'
@@ -70,7 +67,6 @@ import bg3 from '@/assets/images/background-3.png'
 
 const backgrounds = [bg1, bg2, bg3]
 const current = ref(0)
-const searchQuery = ref('')
 
 let timer: ReturnType<typeof setInterval>
 
@@ -96,9 +92,6 @@ onUnmounted(() => {
   clearInterval(timer)
 })
 
-function handleSearch() {
-  if (!searchQuery.value.trim()) return
-}
 </script>
 
 <style scoped>

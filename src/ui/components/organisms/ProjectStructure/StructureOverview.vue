@@ -47,7 +47,7 @@
             v-for="(node, i) in flow"
             :key="node.label"
             class="relative rounded-xl border border-slate-200 bg-white px-4 py-3 transition-all duration-200"
-            :class="node.sectionId ? 'cursor-pointer hover:border-slate-300 hover:shadow-md' : ''"
+            :class="node.sectionId ? ['cursor-pointer', isDesktop ? 'hover:border-slate-300 hover:shadow-md' : ''] : ''"
             @click="onFlowClick(node.sectionId)"
           >
             <div class="flex items-center gap-3">
@@ -77,8 +77,10 @@
 
 <script setup lang="ts">
 import AppBadge from '@atoms/AppBadge.vue'
-import ChevronIcon from '@atoms/icons/ChevronIcon.vue'
 import FileTreeViewer, { type FileTreeNode } from '@molecules/FileTreeViewer.vue'
+import { useBreakpoint } from '@composables/useBreakpoint'
+
+const { isDesktop } = useBreakpoint()
 import ComponentsSection from '@organisms/ProjectStructure/ComponentsSection.vue'
 import StoresSection from '@organisms/ProjectStructure/StoresSection.vue'
 import ComposablesSection from '@organisms/ProjectStructure/ComposablesSection.vue'
