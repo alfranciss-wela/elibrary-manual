@@ -4,7 +4,6 @@
       v-if="open"
       class="fixed inset-0 z-40 flex flex-col bg-white"
     >
-      <!-- Header row -->
       <div class="flex items-center justify-between px-5 h-14 border-b border-slate-100 shrink-0">
         <div class="flex items-center gap-2">
           <span class="w-6 h-6 rounded-md bg-gradient-to-br from-indigo-500 to-violet-500 flex items-center justify-center">
@@ -24,7 +23,6 @@
         </button>
       </div>
 
-      <!-- Nav links -->
       <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1">
         <a
           v-for="link in links"
@@ -48,7 +46,6 @@
         </a>
       </nav>
 
-      <!-- Footer -->
       <div class="shrink-0 px-5 py-4 border-t border-slate-100 flex items-center gap-2">
         <span class="text-xs text-slate-400">E-Library Documentation</span>
         <span class="ml-auto flex items-center gap-1.5">
@@ -73,7 +70,7 @@ defineEmits<{
 const links = [
   { label: 'Home',              href: '/home' },
   { label: 'Project Structure', href: '/project-structure' },
-  { label: 'Development',       href: '/development' },
+  { label: 'Workflow',          href: '/workflow' },
   { label: 'Support',           href: '/support' },
   { label: 'Latest Updates',    href: '/latest-updates' },
 ]

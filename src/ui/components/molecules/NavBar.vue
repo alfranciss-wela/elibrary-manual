@@ -17,7 +17,7 @@ import NavLink from '@atoms/NavLink.vue'
 const links = [
   { label: 'Home', href: '/home' },
   { label: 'Project Structure', href: '/project-structure' },
-  { label: 'Development', href: '/development' },
+  { label: 'Workflow', href: '/workflow' },
   { label: 'Support', href: '/support' },
   { label: 'Latest Updates', href: '/latest-updates' },
 ]

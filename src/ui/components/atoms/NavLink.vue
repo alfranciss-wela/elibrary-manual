@@ -1,7 +1,7 @@
 <template>
   <a
     :href="href"
-    class="text-sm font-medium px-4 py-1.5 rounded-md transition-colors duration-150 last:pr-0"
+    class="text-sm font-medium px-4 py-1.5 rounded-md transition-colors duration-150"
     :class="
       active
         ? 'text-indigo-600 bg-indigo-50/70'
