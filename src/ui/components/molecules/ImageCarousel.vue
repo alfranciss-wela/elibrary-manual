@@ -37,6 +37,8 @@
               :src="src"
               :alt="`Slide ${i + 1}`"
               class="w-full shrink-0 object-cover block"
+              loading="lazy"
+              decoding="async"
             />
           </div>
         </div>
@@ -156,6 +158,8 @@
                 :src="images[lightboxIndex!]"
                 :alt="`Slide ${lightboxIndex! + 1}`"
                 class="block rounded-lg shadow-2xl pointer-events-none max-h-[70vh] w-auto"
+                decoding="async"
+                fetchpriority="high"
                 :style="{
                   transform: `translate(${panX}px, ${panY}px) scale(${zoom})`,
                   transformOrigin: '0 0',

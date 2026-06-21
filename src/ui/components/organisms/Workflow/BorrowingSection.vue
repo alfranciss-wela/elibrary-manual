@@ -51,7 +51,7 @@
 import { ref } from 'vue'
 import StepList from '@molecules/StepList.vue'
 import ImageCarousel from '@molecules/ImageCarousel.vue'
-import ScrollToNext from '@atoms/ScrollToNext.vue'
+import ScrollToNext from '@molecules/ScrollToNext.vue'
 import borrowStudent1 from '@/assets/images/Borrow Transaction/Student/borrow-student-1.png'
 import borrowStudent2 from '@/assets/images/Borrow Transaction/Student/borrow-student-2.png'
 import borrowStudent3 from '@/assets/images/Borrow Transaction/Student/borrow-student-3.png'

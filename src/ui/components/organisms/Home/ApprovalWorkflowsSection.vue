@@ -57,7 +57,7 @@
 </template>
 
 <script setup lang="ts">
-import ScrollToNext from '@atoms/ScrollToNext.vue'
+import ScrollToNext from '@molecules/ScrollToNext.vue'
 import StepList from '@molecules/StepList.vue'
 const features = [
   { label: 'Review submitted books', desc: 'Administrators review new book entries before they go public.' },

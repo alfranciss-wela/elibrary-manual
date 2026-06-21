@@ -1,3 +1,7 @@
 <template>
-  <p class="text-xl font-bold text-center mt-10">Support</p>
+  <SupportOverview />
 </template>
+
+<script setup lang="ts">
+import SupportOverview from '@organisms/Support/SupportOverview.vue'
+</script>

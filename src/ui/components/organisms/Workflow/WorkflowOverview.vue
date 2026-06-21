@@ -1,86 +1,76 @@
 <template>
-  <div class="w-full">
-    <div class="min-h-[calc(100vh-3.5rem)] flex flex-col justify-center py-12 gap-14">
+  <div class="w-full min-h-[calc(100vh-3.5rem)] flex flex-col justify-center py-12 gap-14">
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-        <div class="space-y-6">
-          <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-cyan-500">
-            <span class="w-8 h-px bg-cyan-400" />
-            E-Library System
-          </div>
+      <div class="space-y-6">
+        <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-cyan-500">
+          <span class="w-8 h-px bg-cyan-400" />
+          E-Library System
+        </div>
 
-          <h1 class="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight leading-[1.1]">
-            How the<br>
-            <span class="bg-gradient-to-r from-cyan-500 to-indigo-500 bg-clip-text text-transparent">
-              System Works
-            </span>
-          </h1>
+        <h1 class="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight leading-[1.1]">
+          How the<br>
+          <span class="bg-gradient-to-r from-cyan-500 to-indigo-500 bg-clip-text text-transparent">
+            System Works
+          </span>
+        </h1>
 
-          <p class="text-base text-slate-500 leading-relaxed max-w-lg">
-            Five end-to-end flows covering everything from registering a book to resolving
-            a penalty — built around QR scanning, role-based approvals, and automated tracking.
-          </p>
+        <p class="text-base text-slate-500 leading-relaxed max-w-lg">
+          Five end-to-end flows covering everything from registering a book to resolving
+          a penalty — built around QR scanning, role-based approvals, and automated tracking.
+        </p>
 
-          <div class="flex items-center divide-x divide-slate-200 border-y border-slate-200 py-4 max-w-sm">
-            <div v-for="(stat, i) in stats" :key="stat.label" class="flex flex-col px-4" :class="i === 0 ? 'pl-0' : ''">
-              <span class="text-xl font-black text-slate-900">{{ stat.value }}</span>
-              <span class="text-[10px] font-medium text-slate-400 uppercase tracking-widest">{{ stat.label }}</span>
-            </div>
-          </div>
-
-          <div class="flex flex-wrap gap-2">
-            <AppBadge v-for="tag in tags" :key="tag.label" :color="tag.color">{{ tag.label }}</AppBadge>
+        <div class="flex items-center divide-x divide-slate-200 border-y border-slate-200 py-4 max-w-sm">
+          <div v-for="(stat, i) in stats" :key="stat.label" class="flex flex-col px-4" :class="i === 0 ? 'pl-0' : ''">
+            <span class="text-xl font-black text-slate-900">{{ stat.value }}</span>
+            <span class="text-[10px] font-medium text-slate-400 uppercase tracking-widest">{{ stat.label }}</span>
           </div>
         </div>
 
-        <div class="relative">
-          <div class="absolute left-5 top-5 bottom-5 w-px bg-slate-200" />
+        <div class="flex flex-wrap gap-2">
+          <AppBadge v-for="tag in tags" :key="tag.label" :color="tag.color">{{ tag.label }}</AppBadge>
+        </div>
+      </div>
 
-          <div class="space-y-3">
-            <div
-              v-for="(flow, i) in workflows"
-              :key="flow.title"
-              class="relative flex items-start gap-4 pl-14 group cursor-pointer"
-              @click="scrollTo(flow.sectionId)"
+      <div class="relative">
+        <div class="absolute left-5 top-5 bottom-5 w-px bg-slate-200" />
+
+        <div class="space-y-3">
+          <div
+            v-for="(flow, i) in workflows"
+            :key="flow.title"
+            class="relative flex items-start gap-4 pl-14 group cursor-pointer"
+            @click="scrollTo(flow.sectionId)"
+          >
+            <span
+              class="absolute left-0 w-10 h-10 rounded-full flex items-center justify-center text-sm font-black border-2 border-white shadow-sm transition-all duration-200 shrink-0"
+              :class="[flow.bubbleBg, flow.bubbleText, isDesktop ? 'group-hover:scale-110' : '']"
             >
-              <span
-                class="absolute left-0 w-10 h-10 rounded-full flex items-center justify-center text-sm font-black border-2 border-white shadow-sm transition-all duration-200 shrink-0"
-                :class="[flow.bubbleBg, flow.bubbleText, isDesktop ? 'group-hover:scale-110' : '']"
-              >
-                {{ i + 1 }}
-              </span>
+              {{ i + 1 }}
+            </span>
 
-              <div
-                class="flex-1 rounded-2xl border bg-white px-4 py-3 transition-all duration-200"
-                :class="[flow.borderColor, isDesktop ? flow.hoverBorder : '', isDesktop ? 'group-hover:shadow-md' : '']"
-              >
-                <div class="flex items-center gap-2 mb-0.5">
-                  <span class="text-base">{{ flow.icon }}</span>
-                  <p class="text-sm font-bold text-slate-800">{{ flow.title }}</p>
-                </div>
-                <p class="text-xs text-slate-500 leading-relaxed">{{ flow.desc }}</p>
+            <div
+              class="flex-1 rounded-2xl border bg-white px-4 py-3 transition-all duration-200"
+              :class="[flow.borderColor, isDesktop ? flow.hoverBorder : '', isDesktop ? 'group-hover:shadow-md' : '']"
+            >
+              <div class="flex items-center gap-2 mb-0.5">
+                <span class="text-base">{{ flow.icon }}</span>
+                <p class="text-sm font-bold text-slate-800">{{ flow.title }}</p>
               </div>
+              <p class="text-xs text-slate-500 leading-relaxed">{{ flow.desc }}</p>
             </div>
           </div>
         </div>
-
       </div>
 
-      <div class="flex justify-center">
-        <span class="inline-flex flex-col items-center gap-1 text-slate-300">
-          <span class="text-[11px] font-medium uppercase tracking-widest">Scroll to explore</span>
-          <ChevronIcon class="w-4 h-4" :class="isDesktop ? 'animate-bounce' : ''" />
-        </span>
-      </div>
     </div>
 
-    <div class="space-y-16">
-      <BookSetupSection />
-      <ApprovalCatalogSection />
-      <BorrowingSection />
-      <ReturnPenaltiesSection />
-      <QrTransactionSection />
+    <div class="flex justify-center">
+      <span class="inline-flex flex-col items-center gap-1 text-slate-300">
+        <span class="text-[11px] font-medium uppercase tracking-widest">Scroll to explore</span>
+        <ChevronIcon class="w-4 h-4" :class="isDesktop ? 'animate-bounce' : ''" />
+      </span>
     </div>
   </div>
 </template>
@@ -89,11 +79,6 @@
 import AppBadge from '@atoms/AppBadge.vue'
 import ChevronIcon from '@atoms/icons/ChevronIcon.vue'
 import { useBreakpoint } from '@composables/useBreakpoint'
-import BookSetupSection from '@organisms/Workflow/BookSetupSection.vue'
-import ApprovalCatalogSection from '@organisms/Workflow/ApprovalCatalogSection.vue'
-import BorrowingSection from '@organisms/Workflow/BorrowingSection.vue'
-import ReturnPenaltiesSection from '@organisms/Workflow/ReturnPenaltiesSection.vue'
-import QrTransactionSection from '@organisms/Workflow/QrTransactionSection.vue'
 
 const { isDesktop } = useBreakpoint()
 

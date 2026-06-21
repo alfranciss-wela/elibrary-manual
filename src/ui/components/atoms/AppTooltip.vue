@@ -11,7 +11,6 @@
         <div class="bg-slate-800 text-white text-xs font-medium px-2.5 py-1.5 rounded-lg shadow-lg whitespace-nowrap">
           {{ text }}
         </div>
-        <!-- Arrow -->
         <span class="absolute left-1/2 -translate-x-1/2 w-2 h-2 bg-slate-800 rotate-45" :class="arrowClasses" />
       </div>
     </Transition>

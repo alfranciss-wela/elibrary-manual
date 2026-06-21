@@ -27,7 +27,7 @@
 
 <script setup lang="ts">
 import StepList from '@molecules/StepList.vue'
-import ScrollToNext from '@atoms/ScrollToNext.vue'
+import ScrollToNext from '@molecules/ScrollToNext.vue'
 import ImageCarousel from '@molecules/ImageCarousel.vue'
 import bookSetup1 from '@/assets/images/Book Setup/book-setup-1.png'
 import bookSetup2 from '@/assets/images/Book Setup/book-setup-2.png'

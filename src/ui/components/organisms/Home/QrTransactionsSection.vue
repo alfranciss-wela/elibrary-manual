@@ -57,7 +57,7 @@
 </template>
 
 <script setup lang="ts">
-import ScrollToNext from '@atoms/ScrollToNext.vue'
+import ScrollToNext from '@molecules/ScrollToNext.vue'
 import StepList from '@molecules/StepList.vue'
 const features = [
   { label: 'Generate QR codes for books', desc: 'Each book automatically receives a unique scannable QR code on registration.' },

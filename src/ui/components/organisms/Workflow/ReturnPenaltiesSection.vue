@@ -28,7 +28,7 @@
 <script setup lang="ts">
 import StepList from '@molecules/StepList.vue'
 import ImageCarousel from '@molecules/ImageCarousel.vue'
-import ScrollToNext from '@atoms/ScrollToNext.vue'
+import ScrollToNext from '@molecules/ScrollToNext.vue'
 import penalty1 from '@/assets/images/Return & Penalties/penalty-1.png'
 import penalty2 from '@/assets/images/Return & Penalties/penalty-2.png'
 import penalty3 from '@/assets/images/Return & Penalties/penalty-3.png'

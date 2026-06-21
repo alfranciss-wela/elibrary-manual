@@ -11,14 +11,16 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-type BadgeColor = 'indigo' | 'emerald' | 'blue' | 'cyan' | 'amber' | 'rose' | 'slate'
+type BadgeColor = 'indigo' | 'emerald' | 'blue' | 'cyan' | 'amber' | 'rose' | 'slate' | 'glass'
 
 const props = withDefaults(defineProps<{
   color?: BadgeColor
   dot?: boolean
+  dotColor?: BadgeColor
 }>(), {
   color: 'slate',
   dot: false,
+  dotColor: undefined,
 })
 
 const colorMap: Record<BadgeColor, string> = {
@@ -29,6 +31,7 @@ const colorMap: Record<BadgeColor, string> = {
   amber: 'bg-amber-50 text-amber-700 border-amber-200',
   rose: 'bg-rose-50 text-rose-700 border-rose-200',
   slate: 'bg-slate-100 text-slate-600 border-slate-200',
+  glass: 'bg-white/10 text-white border-white/15 backdrop-blur',
 }
 
 const dotColorMap: Record<BadgeColor, string> = {
@@ -39,8 +42,9 @@ const dotColorMap: Record<BadgeColor, string> = {
   amber: 'bg-amber-500',
   rose: 'bg-rose-500',
   slate: 'bg-slate-500',
+  glass: 'bg-emerald-400',
 }
 
 const colorClass = computed(() => colorMap[props.color])
-const dotColor = computed(() => dotColorMap[props.color])
+const dotColor = computed(() => dotColorMap[props.dotColor ?? props.color])
 </script>
