@@ -3,7 +3,7 @@ import { computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import AppLayout from '@layouts/AppLayout.vue'
 import AppHeader from '@organisms/AppHeader.vue'
-import ScrollToTop from '@atoms/ScrollToTop.vue'
+import ScrollToTop from '@molecules/ScrollToTop.vue'
 
 const route = useRoute()
 const isFullWidth = computed(() => route.meta.fullWidth === true)

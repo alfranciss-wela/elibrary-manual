@@ -28,7 +28,7 @@
 <script setup lang="ts">
 import StepList from '@molecules/StepList.vue'
 import ImageCarousel from '@molecules/ImageCarousel.vue'
-import ScrollToNext from '@atoms/ScrollToNext.vue'
+import ScrollToNext from '@molecules/ScrollToNext.vue'
 import approval1 from '@/assets/images/Approval & Catalog Setup/approval-1.png'
 import approval2 from '@/assets/images/Approval & Catalog Setup/approval-2.png'
 import approval3 from '@/assets/images/Approval & Catalog Setup/approval-3.png'

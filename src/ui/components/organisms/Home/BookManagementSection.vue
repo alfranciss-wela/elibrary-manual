@@ -61,7 +61,7 @@
 </template>
 
 <script setup lang="ts">
-import ScrollToNext from '@atoms/ScrollToNext.vue'
+import ScrollToNext from '@molecules/ScrollToNext.vue'
 import StepList from '@molecules/StepList.vue'
 const features = [
   { label: 'Register and organize books', desc: 'Add new titles with full metadata and cover images.' },

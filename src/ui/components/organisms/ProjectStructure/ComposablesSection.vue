@@ -84,7 +84,7 @@
 <script setup lang="ts">
 import FileTreeViewer, { type FileTreeNode } from '@molecules/FileTreeViewer.vue'
 import CodeBlock from '@molecules/CodeBlock.vue'
-import ScrollToNext from '@atoms/ScrollToNext.vue'
+import ScrollToNext from '@molecules/ScrollToNext.vue'
 
 const tree: FileTreeNode[] = [
   { name: 'useBorrow.ts',   icon: '📄', color: 'text-emerald-300' },

@@ -72,7 +72,6 @@ const links = [
   { label: 'Project Structure', href: '/project-structure' },
   { label: 'Workflow',          href: '/workflow' },
   { label: 'Support',           href: '/support' },
-  { label: 'Latest Updates',    href: '/latest-updates' },
 ]
 </script>
 
