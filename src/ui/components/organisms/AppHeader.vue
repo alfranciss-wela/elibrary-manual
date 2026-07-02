@@ -27,7 +27,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import AppBrand from '@molecules/AppBrand.vue'
+import AppBrand from '@atoms/AppBrand.vue'
 import NavBar from '@molecules/NavBar.vue'
 import MobileNavDrawer from '@molecules/MobileNavDrawer.vue'
 import HamburgerButton from '@atoms/HamburgerButton.vue'

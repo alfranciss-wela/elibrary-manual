@@ -71,6 +71,7 @@ const links = [
   { label: 'Home',              href: '/home' },
   { label: 'Project Structure', href: '/project-structure' },
   { label: 'Workflow',          href: '/workflow' },
+  { label: 'Installation',      href: '/installation' },
   { label: 'Support',           href: '/support' },
 ]
 </script>

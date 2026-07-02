@@ -36,9 +36,9 @@ const router = createRouter({
       component: () => import('@pages/SupportPage.vue'),
     },
     {
-      path: '/latest-updates',
-      name: 'latest-updates',
-      component: () => import('@pages/LatestUpdatesPage.vue'),
+      path: '/installation',
+      name: 'installation',
+      component: () => import('@pages/InstallationPage.vue'),
     },
   ],
 })
