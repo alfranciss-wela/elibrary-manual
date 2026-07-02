@@ -1,17 +1,19 @@
 <template>
   <div class="w-full py-6 flex flex-col gap-5 lg:h-[calc(100vh-3.5rem)]">
 
-    <section class="shrink-0 relative overflow-hidden rounded-3xl bg-slate-900 text-white p-6 sm:p-8 lg:p-10">
-      <div class="absolute inset-0 opacity-30 pointer-events-none">
-        <div class="absolute -top-24 -right-20 w-96 h-96 rounded-full bg-emerald-500 blur-3xl" />
-        <div class="absolute -bottom-32 -left-10 w-96 h-96 rounded-full bg-indigo-500 blur-3xl" />
+    <section class="shrink-0 relative rounded-3xl bg-slate-900 text-white p-6 sm:p-8 lg:p-10">
+      <div class="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none">
+        <div class="absolute inset-0 opacity-30">
+          <div class="absolute -top-24 -right-20 w-96 h-96 rounded-full bg-emerald-500 blur-3xl" />
+          <div class="absolute -bottom-32 -left-10 w-96 h-96 rounded-full bg-indigo-500 blur-3xl" />
+        </div>
+        <div
+          class="absolute inset-0 opacity-[0.08]"
+          style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 24px 24px;"
+        />
       </div>
-      <div
-        class="absolute inset-0 opacity-[0.08] pointer-events-none"
-        style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 24px 24px;"
-      />
 
-      <div class="relative grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-10 items-center">
+      <div class="relative z-10 grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-10 items-center">
         <div class="space-y-5">
           <AppBadge color="glass" dot class="uppercase tracking-widest">
             Active · Open for questions
@@ -29,7 +31,7 @@
             Reach out through email or Discord and we'll get back fast.
           </p>
 
-          <div class="flex flex-wrap items-center gap-3 pt-1">
+          <div class="relative z-20 flex flex-wrap items-center gap-3 pt-1">
             <a
               :href="GMAIL_URL"
               target="_blank"
@@ -40,17 +42,14 @@
               <MailIcon class="w-4 h-4" />
               Send a message
             </a>
-            <a
-              :href="DISCORD_WEB_URL"
-              target="_blank"
-              rel="noopener"
-              class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#5865F2] text-white text-sm font-bold no-underline shadow-sm transition-all duration-200"
-              :class="isDesktop ? 'hover:bg-[#4752c4] hover:-translate-y-0.5' : ''"
-              @click="openDiscord"
-            >
-              <DiscordIcon class="w-4 h-4" />
-              Chat with us
-            </a>
+            <AppDropdown
+              label="Chat with us"
+              :icon="DiscordIcon"
+              menu-title="Choose who to contact"
+              :options="discordOptions"
+              :button-class="discordButtonClass"
+              @select="openDiscordUser"
+            />
           </div>
         </div>
 
@@ -101,13 +100,19 @@
 </template>
 
 <script setup lang="ts">
-import { h } from 'vue'
+import { computed, h } from 'vue'
 import AppBadge from '@atoms/AppBadge.vue'
 import ContactChannelCard from '@molecules/ContactChannelCard.vue'
+import AppDropdown from '@molecules/AppDropdown.vue'
 import ProfileAvatar from '@molecules/ProfileAvatar.vue'
 import { useBreakpoint } from '@composables/useBreakpoint'
 
 const { isDesktop } = useBreakpoint()
+
+const discordButtonClass = computed(() => {
+  const hover = isDesktop.value ? 'hover:-translate-y-0.5 hover:bg-[#4752c4]' : ''
+  return `bg-[#5865F2] text-white shadow-sm ${hover}`
+})
 
 const devs = [
   {
@@ -122,6 +127,25 @@ const devs = [
   },
 ]
 
+const team = [
+  {
+    id: 'alfranciss',
+    name: 'Alfranciss',
+    discordUrl: 'https://discordapp.com/743739188628684851',
+  },
+  {
+    id: 'clevane',
+    name: 'Clevane',
+    discordUrl: 'https://discordapp.com/369653152439468043',
+  },
+] as const
+
+const discordOptions = team.map(member => ({
+  id: member.id,
+  label: member.name,
+  avatar: devs.find(d => d.name === member.name)?.avatar,
+}))
+
 const MailIcon = () => h('svg', { fill: 'none', viewBox: '0 0 24 24', stroke: 'currentColor', 'stroke-width': '2' }, [
   h('path', { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', d: 'M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' }),
 ])
@@ -131,10 +155,35 @@ const DiscordIcon = () => h('svg', { fill: 'currentColor', viewBox: '0 0 24 24' 
 const GithubIcon = () => h('svg', { fill: 'currentColor', viewBox: '0 0 24 24' }, [
   h('path', { d: 'M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.51-1.47.11-3.07 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.62 1.6.23 2.78.11 3.07.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.05.78 2.12 0 1.53-.01 2.77-.01 3.15 0 .31.21.68.8.56C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z' }),
 ])
+
 const GMAIL_URL = 'https://gmail.com'
 const GITHUB_URL = 'https://github.com'
 const DISCORD_APP_URL = 'discord://-/channels/@me'
 const DISCORD_WEB_URL = 'https://discord.com/channels/@me'
+
+function discordUserId(url: string) {
+  return url.split('/').filter(Boolean).pop() ?? ''
+}
+
+function openDiscordUser(memberId: string) {
+  const member = team.find(m => m.id === memberId)
+  if (!member) return
+
+  const userId = discordUserId(member.discordUrl)
+  const appUrl = userId ? `discord://-/users/${userId}` : 'discord://-/channels/@me'
+  const webUrl = member.discordUrl
+
+  let appOpened = false
+  const onBlur = () => { appOpened = true }
+  window.addEventListener('blur', onBlur, { once: true })
+
+  window.location.href = appUrl
+
+  setTimeout(() => {
+    window.removeEventListener('blur', onBlur)
+    if (!appOpened) window.open(webUrl, '_blank', 'noopener')
+  }, 700)
+}
 
 function openDiscord(e: MouseEvent) {
   e.preventDefault()
@@ -164,7 +213,7 @@ const channels = [
     bgGradient: 'bg-gradient-to-br from-indigo-50 via-white to-violet-50',
     dotColor: 'bg-indigo-400',
     statusDot: 'bg-emerald-400',
-    href: GMAIL_URL,
+    href: 'https://gmail.com',
     external: true,
     onClick: undefined,
   },
